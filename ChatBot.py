@@ -3,6 +3,21 @@ import tkinter
 from tkinter import *
 from nltk.chat.util import Chat, reflections
 
+
+
+# This is a modified converse function from nltk.chat.util
+class modifiedConverse(Chat):
+    def converse(user_input):
+        while user_input[-1] in "!.":
+            user_input = user_input[:-1]
+        return self.respond(user_input)
+
+####################################################################
+# The following is our chatbot implementation                      #
+####################################################################
+                
+
+
 #this section is functions
 
 #this function ends the window
@@ -14,21 +29,33 @@ def makeMenu():
     mainMenu = Menu(root)
     mainMenu.add_command(label = "Quit", command=kill)
     root.config(menu=mainMenu)
+    
+#This function retrieves the userInput and then passes it to the console
+def sendClick():
+    userInput = mesWin.get("1.0", END)
+    mesWin.delete("1.0", END)
+    reply = chatbot.converse(userInput)
+    
+    
 
+#generate the  and run the chat interface
 def beginClick():
     begin.destroy()
-    #Chat window
-    chatWin = Text(root, bd=1, bg="black", width=50, height=8, font=("Arial", 25), foreground="#00FFFF")
+    # place the Chat window
     chatWin.place(x=6, y=6, height=385, width=370)
-    #Message window
-    mesWin = Text(root, bd=0, bg="black",width="30", height="4", font=("Arial", 23), foreground="#00ffff")
+    # place the message window
     mesWin.place(x=128, y=400, height=88, width=260)
     #Scroll bar for the Chat
     scroll = Scrollbar(root, command=chatWin.yview, cursor="star")
     scroll.place(x=375, y=5, height=385)
     #Button to send your message
-    sendIn = Button(root, text="Send", width=12, height=5, bd=0, bg="#0080FF", activebackground="#00BFFF", foreground="#FFFFFF", font=("Arial", 12))
+    sendIn = Button(root, text="Send", width=12, height=5, bd=0, bg="#0080FF", activebackground="#00BFFF", foreground="#FFFFFF", font=("Arial", 12), command=sendClick)
     sendIn.place(x=6, y=400, height=88)
+
+    
+    
+
+    
 
 #this section is where the GUI will be built
 root = Tk()
@@ -36,12 +63,15 @@ root.title("Chatbot")
 root.geometry("400x500")
 root.resizable(width=FALSE, height=FALSE)
 
+#this section is textboxes that will be placed by the beginClick function
+#chat window
+chatWin = Text(root, bd=1, bg="black", width=50, height=8, font=("Arial", 25), foreground="#00FFFF")
+#Message window
+mesWin = Text(root, bd=0, bg="black",width="30", height="4", font=("Arial", 23), foreground="#00ffff")
+
+
 #generate the menu at the top
 makeMenu()
-
-#Entry Screen
-begin = Button(text="Click me to begin chatting with SportBot!", width=400, height=500, bg="black", fg="white", command=beginClick, font=("Arial", 12))
-begin.pack()
 
 
 
@@ -70,8 +100,17 @@ pairs = [
     ['(.*) most gold medals?', ['Michael Phelps with 23.']]
 ]
 
+
+#Entry Screen
+#When this button is clicked it will call the beginClick function to generate the chat interface
+chatbot = Chat(pairs, reflections)
+
+begin = Button(text="Click me to begin chatting with SportBot!", width=400, height=500, bg="black", fg="white", command=beginClick, font=("Arial", 12))
+begin.pack()
+
+
+
 #when the code reaches this point it begins to loop a chat
-#chatbot = Chat(pairs, reflections)
-#chatbot.converse()
+
 
 root.mainloop()
