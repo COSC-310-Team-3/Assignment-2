@@ -122,7 +122,7 @@ pairs = [
 #When this button is clicked it will call the beginClick function to generate the chat interface
 chatbot = modifiedChat(pairs, reflections)
 
-begin = Button(text="Click me to begin chatting with SportBot!", width=400, height=500, bg="black", fg="white", command=beginClick, font=("Arial", 20))
+begin = Button(text="Click me to begin chatting with SportBot!", width=400, height=500, bg="white", fg="black", command=beginClick, font=("Arial", 20))
 begin.pack()
 
 
