@@ -36,7 +36,7 @@ def sendClick():
     reply = chatbot.converse(userInput)
     output = ""
     chatWin.configure(state="normal")
-    if "Welcome to" not in chatWin.get("1.0", END):
+    if "To begin" in chatWin.get("1.0", END):
         chatWin.delete("1.0", END)
         output = userInput + "\n                        " + reply + "\n"
     else:
@@ -54,9 +54,10 @@ def beginClick():
     chatWin.place(x=6, y=6, height=385, width=562.5)
     # place the message window
     mesWin.place(x=128, y=400, height=88, width=440)
+    mesWin.place(x=6, y=400, height=88, width=440)
     #Button to send your message
     sendIn = Button(root, text="Send", width=12, height=5, bd=0, bg="#0080FF", activebackground="#00BFFF", foreground="#FFFFFF", font=("Arial", 12), command=sendClick)
-    sendIn.place(x=6, y=400, height=88)
+    sendIn.place(x=455, y=400, height=88)
 
     
     
