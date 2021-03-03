@@ -6,8 +6,8 @@ from nltk.chat.util import Chat, reflections
 
 
 # This is a modified converse function from nltk.chat.util
-class modifiedConverse(Chat):
-    def converse(user_input):
+class modifiedChat(Chat):
+    def converse(self, user_input):
         while user_input[-1] in "!.":
             user_input = user_input[:-1]
         return self.respond(user_input)
@@ -35,6 +35,7 @@ def sendClick():
     userInput = mesWin.get("1.0", END)
     mesWin.delete("1.0", END)
     reply = chatbot.converse(userInput)
+    print(reply)
     
     
 
@@ -103,7 +104,7 @@ pairs = [
 
 #Entry Screen
 #When this button is clicked it will call the beginClick function to generate the chat interface
-chatbot = Chat(pairs, reflections)
+chatbot = modifiedChat(pairs, reflections)
 
 begin = Button(text="Click me to begin chatting with SportBot!", width=400, height=500, bg="black", fg="white", command=beginClick, font=("Arial", 12))
 begin.pack()
