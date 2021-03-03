@@ -4,7 +4,6 @@ from tkinter import *
 from nltk.chat.util import Chat, reflections
 
 
-
 # This is a modified converse function from nltk.chat.util
 class modifiedChat(Chat):
     def converse(self, user_input):
@@ -31,11 +30,20 @@ def makeMenu():
     root.config(menu=mainMenu)
     
 #This function retrieves the userInput and then passes it to the console
-def sendClick():
+def sendClick():     
     userInput = mesWin.get("1.0", END)
     mesWin.delete("1.0", END)
     reply = chatbot.converse(userInput)
-    print(reply)
+    output = ""
+    chatWin.configure(state="normal")
+    if "Welcome to" not in chatWin.get("1.0", END):
+        chatWin.delete("1.0", END)
+        output = userInput + "\n                        " + reply + "\n"
+    else:
+        output = "\n" + userInput + "\n        " + reply + "\n"
+    chatWin.insert(END, output)
+    chatWin.see(END)
+    chatWin.configure(state="disabled")
     
     
 
@@ -43,12 +51,9 @@ def sendClick():
 def beginClick():
     begin.destroy()
     # place the Chat window
-    chatWin.place(x=6, y=6, height=385, width=370)
+    chatWin.place(x=6, y=6, height=385, width=562.5)
     # place the message window
-    mesWin.place(x=128, y=400, height=88, width=260)
-    #Scroll bar for the Chat
-    scroll = Scrollbar(root, command=chatWin.yview, cursor="star")
-    scroll.place(x=375, y=5, height=385)
+    mesWin.place(x=128, y=400, height=88, width=440)
     #Button to send your message
     sendIn = Button(root, text="Send", width=12, height=5, bd=0, bg="#0080FF", activebackground="#00BFFF", foreground="#FFFFFF", font=("Arial", 12), command=sendClick)
     sendIn.place(x=6, y=400, height=88)
@@ -61,12 +66,14 @@ def beginClick():
 #this section is where the GUI will be built
 root = Tk()
 root.title("Chatbot")
-root.geometry("400x500")
+root.geometry("575x500")
 root.resizable(width=FALSE, height=FALSE)
 
 #this section is textboxes that will be placed by the beginClick function
 #chat window
-chatWin = Text(root, bd=1, bg="black", width=50, height=8, font=("Arial", 25), foreground="#00FFFF")
+chatWin = Text(root, bd=1, bg="black", width=50, height=8, font=("Arial", 25), foreground="#00FFFF", wrap=WORD)
+chatWin.insert(END, "To begin chatting type your message into the textbox on the bottom\n")
+chatWin.configure(state="disabled")
 #Message window
 mesWin = Text(root, bd=0, bg="black",width="30", height="4", font=("Arial", 23), foreground="#00ffff")
 
@@ -106,9 +113,8 @@ pairs = [
 #When this button is clicked it will call the beginClick function to generate the chat interface
 chatbot = modifiedChat(pairs, reflections)
 
-begin = Button(text="Click me to begin chatting with SportBot!", width=400, height=500, bg="black", fg="white", command=beginClick, font=("Arial", 12))
+begin = Button(text="Click me to begin chatting with SportBot!", width=400, height=500, bg="black", fg="white", command=beginClick, font=("Arial", 20))
 begin.pack()
-
 
 
 #when the code reaches this point it begins to loop a chat
