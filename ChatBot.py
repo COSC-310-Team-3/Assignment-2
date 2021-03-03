@@ -106,7 +106,15 @@ pairs = [
     ['(.*) watch the game last night?', ['I did not watch it, but all the stats automatically uploaded to my personal hard drive']],
     ['(.*) next summer olympics?', ['This summer in Tokyo']],
     ['(.*) next winter olympics?', ['2022 in Beijing']],
-    ['(.*) most gold medals?', ['Michael Phelps with 23.']]
+    ['(.*) most gold medals?', ['Michael Phelps with 23.']],
+    ['how are you?', ['I am well. And you?']],
+    ['i am (.*)', ['Alright']],
+    ['when is the next world cup?', ['Next year in Qatar']],
+    ['who will win the next world cup?',['Canada, no doubt. They are a soccer powerhouse']],
+    ['who are you', ['I am sports bot. It is my duty to assist you in anything related to sports.']],
+    ['(.*) favourite team?', ['I have no allegiance to any sports organization']],
+    ['(.*) favourite basketball player?', ['The legend Alex Caruso']],
+    ['(.*) favourite goal of all time?', ['Any of Loui Erikksons empty nets']]
 ]
 
 
