@@ -114,7 +114,14 @@ pairs = [
     ['who are you', ['I am sports bot. It is my duty to assist you in anything related to sports.']],
     ['(.*) favourite team?', ['I have no allegiance to any sports organization']],
     ['(.*) favourite basketball player?', ['The legend Alex Caruso']],
-    ['(.*) favourite goal of all time?', ['Any of Loui Erikksons empty nets']]
+    ['(.*) favourite goal of all time?', ['Any of Loui Erikksons empty nets']],
+    ['who is the most well known canadian hockey player', ['That is Wayne Gretzky easily']],
+    ['how many hockey players can you name', ['I can name about 10 or so do you want me to name them all?']],
+    ['yes name them all', ['Okay then we have Wayne Gretzky, Sidney Crosby, Alexander Ovechkin, Patrick Kane, Jonathan Toews, Steven Stamkos, Robert Orr, Gordie Howe, P. K. Subban, and finally Tim Hortons']],
+    ['who made you (.*)', ['I was made by Keegan Wright, Jivraj Grewal, Owen Spicker, Brenden Trieu, and Hassan Brar']],
+    ['what year is it', ['The current year is 2021 as of my last update']],
+    ['what stopped sports last year', ['The COVID-19 pandemic halted everything for a while but we are slowly recovering']],
+    ['(.*) do you think i will get better if i practice sports', ['As they say practice makes perfect but remember Rome was not built in a day so it may take some time']]
 ]
 
 
@@ -122,7 +129,7 @@ pairs = [
 #When this button is clicked it will call the beginClick function to generate the chat interface
 chatbot = modifiedChat(pairs, reflections)
 
-begin = Button(text="Click me to begin chatting with SportBot!", width=400, height=500, bg="black", fg="white", command=beginClick, font=("Arial", 20))
+begin = Button(text="Click me to begin chatting with SportBot!", width=400, height=500, bg="white", fg="black", command=beginClick, font=("Arial", 20))
 begin.pack()
 
 
