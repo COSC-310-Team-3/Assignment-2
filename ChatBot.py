@@ -121,7 +121,9 @@ pairs = [
     ['who made you (.*)', ['I was made by Keegan Wright, Jivraj Grewal, Owen Spicker, Brenden Trieu, and Hassan Brar']],
     ['what year is it', ['The current year is 2021 as of my last update']],
     ['what stopped sports last year', ['The COVID-19 pandemic halted everything for a while but we are slowly recovering']],
-    ['(.*) do you think i will get better if i practice sports', ['As they say practice makes perfect but remember Rome was not built in a day so it may take some time']]
+    ['(.*) do you think i will get better if i practice sports', ['As they say practice makes perfect but remember Rome was not built in a day so it may take some time']],
+    ['(.*)', ['Sorry can you try again I do not understand']],
+    ['', ['Sorry can you try again I do not understand']]
 ]
 
 
