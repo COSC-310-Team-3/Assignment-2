@@ -1,8 +1,10 @@
+
 import nltk
 import tkinter
 from tkinter import *
 from nltk.chat.util import Chat, reflections
-
+nltk.download('averaged_perceptron_tagger')
+from nltk import word_tokenize
 
 # This is a modified converse function from nltk.chat.util
 class modifiedChat(Chat):
@@ -32,6 +34,9 @@ def makeMenu():
 #This function retrieves the userInput and then passes it to the console
 def sendClick():     
     userInput = mesWin.get("1.0", END)
+    userInput = userInput.lower();
+    text = word_tokenize(userInput);
+    print(nltk.pos_tag(text));
     mesWin.delete("1.0", END)
     reply = chatbot.converse(userInput)
     output = ""
@@ -122,6 +127,18 @@ pairs = [
     ['what year is it', ['The current year is 2021 as of my last update']],
     ['what stopped sports last year', ['The COVID-19 pandemic halted everything for a while but we are slowly recovering']],
     ['(.*) do you think i will get better if i practice sports', ['As they say practice makes perfect but remember Rome was not built in a day so it may take some time']],
+    ['(.*) win the premier league this year?',['It is looking increasingly likely that Manchester City will win the title.']],
+    ['what is the premier league?', ['The Premier League is the top division of soccer in England.']],
+    ['(.*) best premier league team?', ['All time, Manchester United have won the most titles. But more recently, Manchester City']],
+    ['(.*) most premier league goals?', ['Alan Shearer, with 260 goals']],
+    ['what is the champions league?', ['The UEFA Champions League is an annual soccer competition consisting of the best teams in Europe.']],
+    ['(.*) win the champions league this year?', ['At this point, it is too close to determine.']],
+    ['(.*) best champions league team?', ['All time, Real Madrid have been the most successful team with 13 titles.']],
+    ['(.*) most champions league goals?', ['Cristiano Ronaldo, with 134 goals and counting']],
+    ['(.*) favourite soccer player?', ['Adebayo Akinfenwa']],
+    ['(.*) best soccer player ever?', ['Many have said Pele, however no one has ever been as good as Messi']],
+    ['(.*) best soccer team in Canada?', ['Vancouver Whitecaps']],
+    ['(.*) best canadian soccer player?', ['Alphonso Davies']],
     ['(.*)', ['Sorry can you try again I do not understand']],
     ['', ['Sorry can you try again I do not understand']]
 ]

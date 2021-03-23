@@ -3,7 +3,8 @@ import nltk
 import tkinter
 from tkinter import *
 from nltk.chat.util import Chat, reflections
-
+nltk.download('averaged_perceptron_tagger')
+from nltk import word_tokenize
 
 # This is a modified converse function from nltk.chat.util
 class modifiedChat(Chat):
@@ -33,6 +34,9 @@ def makeMenu():
 #This function retrieves the userInput and then passes it to the console
 def sendClick():     
     userInput = mesWin.get("1.0", END)
+    userInput = userInput.lower();
+    text = word_tokenize(userInput);
+    print(nltk.pos_tag(text));
     mesWin.delete("1.0", END)
     reply = chatbot.converse(userInput)
     output = ""
